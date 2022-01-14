@@ -98,6 +98,11 @@ void test_dfm_cmd_line(DFM_Machine* dfm, char* str_op) {
 	DFM_Alphabet input_string[100];
 	int i;
 	for (i = 0; i < 100 && str_op[i] != '\0'; ++i) {
+		if (str_op[i] != '0' && str_op[i] != '1') {
+			printf("Invalid character in input string\n");
+			printf("%c is not a part of the machine alphabet\n", str_op[i]);
+			return;
+		}
 		input_string[i] = str_op[i] == '1' ? DFM_ONE : DFM_ZERO;
 	}
 	run_dfm(dfm, input_string, i);
